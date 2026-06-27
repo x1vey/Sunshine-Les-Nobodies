@@ -28,10 +28,9 @@ const HeroSection = () => {
         </h1>
 
         <p className="body-text max-w-xl mt-8">
-          I assist people in being aware of their energies throughout their
-          journey of healing — recognizing imbalance within self, and empowering
-          you to return to balance, without waiting on anyone else.
-        </p>
+          I assist people in being aware of their energies and energetic connections throughout their life journey  — I assist people in being aware of their energies 
+          and energetic connections throughout their life journey - strengthening one's ability to independently recognize imbalance within self, 
+          and empowerment to return to balance to ensure healthful and enjoyable energy exchanges with others.</p>
 
         <div className="flex flex-wrap gap-4 justify-center mt-10">
           <a href={links.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
