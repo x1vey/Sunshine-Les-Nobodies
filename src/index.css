@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Jost:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm earthy, light & ethereal */
+    --background: 36 44% 96%;        /* warm cream */
+    --foreground: 20 18% 22%;        /* soft clay-brown ink */
+
+    --card: 36 50% 98%;
+    --card-foreground: 20 18% 22%;
+
+    --popover: 36 50% 98%;
+    --popover-foreground: 20 18% 22%;
+
+    /* Terracotta */
+    --primary: 14 62% 56%;
+    --primary-foreground: 36 50% 98%;
+
+    /* Sage */
+    --secondary: 110 16% 80%;
+    --secondary-foreground: 120 14% 24%;
+
+    --muted: 34 30% 90%;
+    --muted-foreground: 24 12% 46%;
+
+    /* Clay accent */
+    --accent: 28 54% 62%;
+    --accent-foreground: 20 18% 18%;
+
+    --destructive: 0 70% 52%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 24% 86%;
+    --input: 30 24% 86%;
+    --ring: 14 62% 56%;
+
+    --radius: 18px;
+
+    /* Earthy tones */
+    --terracotta: 14 62% 56%;
+    --clay: 22 48% 58%;
+    --sand: 36 46% 84%;
+    --sage: 110 18% 58%;
+    --sage-deep: 120 16% 36%;
+    --ochre: 38 64% 56%;
+    --plum: 330 18% 46%;
+
+    --sidebar-background: 36 44% 96%;
+    --sidebar-foreground: 20 18% 22%;
+    --sidebar-primary: 14 62% 56%;
+    --sidebar-primary-foreground: 36 50% 98%;
+    --sidebar-accent: 34 30% 90%;
+    --sidebar-accent-foreground: 20 18% 22%;
+    --sidebar-border: 30 24% 86%;
+    --sidebar-ring: 14 62% 56%;
+
+    --font-serif: 'Fraunces', Georgia, serif;
+    --font-sans: 'Jost', system-ui, sans-serif;
+
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Soft warm light blooms */
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(60vw 50vh at 85% -5%, hsl(var(--clay) / 0.18), transparent 70%),
+      radial-gradient(50vw 50vh at -5% 30%, hsl(var(--sage) / 0.16), transparent 70%),
+      radial-gradient(40vw 40vh at 50% 110%, hsl(var(--ochre) / 0.12), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    text-wrap: balance;
+    @apply tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+  }
+}
+
+@layer components {
+  .meta-label {
+    @apply text-[11px] uppercase tracking-[0.3em] text-primary;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.3em] text-primary;
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply w-7 h-px bg-primary/50;
+  }
+
+  .eyebrow-center::after {
+    content: '';
+    @apply w-7 h-px bg-primary/50;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 px-6 md:px-12 lg:px-20;
+  }
+
+  .heading-hero {
+    font-size: clamp(2.75rem, 7vw, 6rem);
+    @apply font-light leading-[1.02];
+    font-family: var(--font-serif);
+  }
+
+  .heading-section {
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    @apply font-light leading-[1.08];
+    font-family: var(--font-serif);
+  }
+
+  .body-text {
+    @apply text-base md:text-lg leading-relaxed text-muted-foreground;
+    font-family: var(--font-sans);
+    font-weight: 300;
+  }
+
+  .nav-link {
+    @apply relative text-xs uppercase tracking-[0.18em] text-foreground/70;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    transition: color 300ms var(--ease-out-quint);
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-px bg-primary;
+    transition: width 300ms var(--ease-out-quint);
+  }
+
+  .nav-link:hover {
+    @apply text-foreground;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-[0.18em] bg-primary text-primary-foreground rounded-full font-medium;
+    font-family: var(--font-sans);
+    transition: all 300ms var(--ease-out-quint);
+    box-shadow: 0 10px 24px -10px hsl(var(--primary) / 0.55);
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 16px 30px -10px hsl(var(--primary) / 0.6);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-[0.18em] border border-foreground/25 text-foreground rounded-full font-medium;
+    font-family: var(--font-sans);
+    transition: all 300ms var(--ease-out-quint);
+  }
+
+  .btn-outline:hover {
+    @apply bg-foreground text-background -translate-y-0.5;
+  }
+
+  /* WhatsApp brand button */
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2.5 px-8 py-4 text-xs uppercase tracking-[0.18em] text-white rounded-full font-medium;
+    font-family: var(--font-sans);
+    background: linear-gradient(135deg, #25D366, #128C5E);
+    transition: all 300ms var(--ease-out-quint);
+    box-shadow: 0 10px 24px -10px rgb(37 211 102 / 0.7);
+  }
+
+  .btn-whatsapp:hover {
+    @apply -translate-y-0.5;
+    box-shadow: 0 16px 32px -10px rgb(37 211 102 / 0.8);
+  }
+
+  /* Soft warm card */
+  .card-soft {
+    @apply rounded-[1.75rem] border border-border bg-card;
+    box-shadow: 0 1px 2px hsl(20 18% 22% / 0.04), 0 12px 32px -16px hsl(20 18% 22% / 0.18);
+    transition: all 420ms var(--ease-out-quint);
+  }
+
+  .card-soft:hover {
+    @apply -translate-y-1.5 border-primary/30;
+    box-shadow: 0 1px 2px hsl(20 18% 22% / 0.05), 0 26px 50px -20px hsl(var(--primary) / 0.3);
+  }
+
+  .gold-text {
+    color: hsl(var(--primary));
+    font-style: italic;
+  }
+
+  /* Organic blob radius for image frames */
+  .blob-1 {
+    border-radius: 64% 36% 57% 43% / 47% 56% 44% 53%;
+  }
+
+  .blob-2 {
+    border-radius: 42% 58% 41% 59% / 56% 41% 59% 44%;
+  }
+
+  /* Earthy chakra/spectrum bar (warm tones) */
+  .spectrum-bar {
+    @apply w-full h-1 rounded-full;
+    background: linear-gradient(90deg,
+      hsl(var(--terracotta)),
+      hsl(var(--clay)),
+      hsl(var(--ochre)),
+      hsl(var(--sage)),
+      hsl(var(--plum)));
+  }
+
+  .grain {
+    position: relative;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
